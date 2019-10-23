@@ -35,22 +35,7 @@ def short_name(chosen):
 
     return computer
 
-def main():
-    print('rock (r), scissors (s), paper (p), lizard (l), or spock (k)')
-    player = input('Enter choice:')
-    computer = randint(1,5)
-    computer = short_name(computer)
-    player_choice = full_name(player)
-    computer_choice = full_name(computer)
-
-    options = ['r', 's', 'p', 'l', 'k']
-
-    print('')
-
-    if player in options:
-        vs_text = player_choice + ' vs ' + computer_choice
-        print(vs_text)
-
+def get_winner_text(player, computer):
     if player == computer:
         print('DRAW!')
 
@@ -102,11 +87,39 @@ def main():
     else:
         print('Something isn\'t right here')
 
+def play_again():
     play = input('\nPlay again? [Y/n]')
     if play.lower() == 'n':
         continue_play = 'false'
+        bye_messages = ['See you later.', 'Have a great day!', 'Until we meet again.', 'I hope you had fun.', 'Gone so soon?', 'Tata for now.', 'Toodle loo.', ]
+        bye_message_number = randint(1,len(bye_messages))
+        print(bye_messages[bye_message_number])
+
     else:
         continue_play = 'true'
         main()
+
+
+def main():
+    print('rock (r), scissors (s), paper (p), lizard (l), or spock (k)')
+    player = input('Enter choice:')
+    computer = randint(1,5)
+    computer = short_name(computer)
+    player_choice = full_name(player)
+    computer_choice = full_name(computer)
+
+    options = ['r', 's', 'p', 'l', 'k']
+
+    print('')
+
+    if player in options:
+        vs_text = player_choice + ' vs ' + computer_choice
+        print(vs_text)
+
+    get_winner_text(player, computer)
+
+    play_again()
+
+
 
 main()
